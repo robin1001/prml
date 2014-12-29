@@ -1,0 +1,30 @@
+* Support Vector Machine
+
+** Key Steps
++ 点到超平面的距离
++ 最大间隔的初始形式
++ 约束 $||w||=1$ 后目标函数与约束条件
++ 拉格朗日乘子法求解极值, 对$w$ , $b$ 求导
++ 得到w,b带入拉格朗日函数，得到对偶形式
++ 对偶转化为核形式
++ 求解该二次优化问题
+
+** 如何预测?
+非支持向量其 $\alpha_i = 0$ , 所以预测时仅与支持向量有关
+$$ y(x) = \Sigma_{n=1}^{N} \alpha_{n}t_{n}k(x,x_{n})+b $$
+
+** 非线性可分
++ 引入松弛因子, 其对偶形式不变
++ 约束条件变为box constraints
+
+
+** SMO 算法
+利用坐标上升法, 每次循环选择两个alpha进行优化处理, 固定其他alpha不变。
+可以分为以下两步:
+*** Solving for Two Lagrange Multipliers
+固定其他alpha后，由于约束 $ \Sigma \alpha_{i} t_n = 0 $, $\alpha_1$ 可以由 $\alpha_2$ 表示,
+所以拉格朗日函数与 $\alpha_2$ 有关, 求导即得 $\alpha$ 的最优值
+
+*** Heuristics Choosing Which Multipliers to Optimize 
++ 第一个alpha选择两种方式：一是在所有数据集上进行单遍扫描二是在非边界alpha中单遍扫描。SMO算法选择过程中会在两种方式间交替
++ 第二个alpha通过最大步长优选得到。 
