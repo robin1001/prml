@@ -17,12 +17,11 @@ $$ y(x) = \Sigma_{n=1}^{N} \alpha_{n}t_{n}k(x,x_{n})+b $$
 + 引入松弛因子, 其对偶形式不变
 + 约束条件变为box constraints
 
-
 ** SMO 算法
 利用坐标上升法, 每次循环选择两个alpha进行优化处理, 固定其他alpha不变。
 可以分为以下两步:
 *** Solving for Two Lagrange Multipliers
-固定其他alpha后，由于约束 $ \Sigma \alpha_{i} t_n = 0 $, $\alpha_1$ 可以由 $\alpha_2$ 表示,
+固定其他alpha后，由于约束 $\Sigma \alpha_{i} t_{n} =0$ ,  $\alpha_1$ 可以由 $\alpha_2$ 表示,
 所以拉格朗日函数与 $\alpha_2$ 有关, 求导即得 $\alpha$ 的最优值
 
 *** Heuristics Choosing Which Multipliers to Optimize 
