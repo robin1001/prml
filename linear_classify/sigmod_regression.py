@@ -5,27 +5,23 @@ def sigmod(x):
 
 data = mat(np.loadtxt('data.txt'))
 num = data.shape[0]
-print num
-x1, x2, t = data[:,0], data[:,1], data[:,2]
-for i in range(num):
-    if t[i] == 0:
-        plot(x1[i], x2[i], 'ro')
-    else:
-        plot(x1[i], x2[i], 'bo')
 
-x = hstack((x1, x2, ones((num, 1))))
+x = hstack((data[:, 0:2], ones((num, 1))))
+t = data[:, 2]
 w = ones((3, 1))
 epock = 1000
 alpha = 0.001
 for i in range(epock):
    y = sigmod(x * w)
-   dw = x.T * (y - t) 
-   w = w + multiply(alpha, dw)
+   dw = x.T * (t - y) 
+   w = w + alpha * dw
 
-print w
-y = mat(zeros((num, 1)))
-for i in range(num):
-	y[i] = -(w[0] * x1[i] + w[2]) / w[1]
-yy = hstack((x2, y))
-print yy
+class0 = data[find(data[:, 2] == 0)]
+class1 = data[find(data[:, 2] == 1)]
+plot(class0[:, 0], class0[:, 1], 'ro')
+plot(class1[:, 0], class1[:, 1], 'go')
+
+y = -(w[2,0] + w[0,0] * x[:, 0]) / w[1,0]
+plot(x[:, 0], y)
 show()
+
