@@ -1,0 +1,35 @@
+* Neural Network
+
+** coding keypoint
+*** bias
+1. 初始化权重w
+2. 前向计算时每一次a均需加bias
+3. BP时对bias节点的特殊处理,bias节点对下层无导
+
+*** formulation maxtix implementation
+1. 导数h = a .* (1-a)
+2. d[i] = (d[i+1] * w) .* h
+3. dw[i] = d[i+1].T * a[i]
+
+** learning rate
+1. 做A+B回归时(未Normalize),影响很大，有时根本不收敛，这时调节一下学习速率就好了
+
+2. DeepLearning ToolBox 
+#+BEGIN_EXAMPLE
+    nn.activation_function              = 'tanh_opt';   %  Activation functions of hidden layers: 'sigm' (sigmoid) or 'tanh_opt' (optimal tanh).
+    nn.learningRate                     = 2;            %  learning rate Note: typically needs to be lower when using 'sigm' activation function and non-normalized inputs.
+    nn.scaling_learningRate             = 1;            %  Scaling factor for the learning rate (each epoch)
+    nn.weightPenaltyL2                  = 0;            %  L2 regularization
+    nn.testing                          = 0;            %  Internal variable. nntest sets this to one.
+    nn.output                           = 'sigm';       %  output unit 'sigm' (=logistic), 'softmax' and 'linear'
+#+END_EXAMPLE
+** nn.py 
+there are many design pattern of the implementation of the output function and active funtion, for example:
+1. oop: class Sigmoid with eval and dirivate function
+2. msg passing: self.activefn('fp', self.a[i-1] * self.w[i-1].T) with 'fp' msg
+3. inner funciton: some funcitonal 
+4. if else
+I'm struggle to choose the best one, i tried all, that is a question
+finally, to keep it simple, if else
+
+
