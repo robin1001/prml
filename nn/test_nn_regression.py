@@ -16,5 +16,6 @@ net.batch_size = 10
 
 net.train()
 loss, y = net.test(test_x, test_y)
-plot(abs(y - test_y))
-show()
+#plot(abs(y - test_y))
+print abs(y - test_y)
+#show()

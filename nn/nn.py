@@ -1,5 +1,4 @@
 from numpy import *
-from numpy.random import *
 
 # author: robin1001 date: 2015-01-15
 
@@ -33,7 +32,7 @@ class NN(object):
         self.a = [None]*self.n
         for i in range(self.n - 1):
             n1, n2 = self.layer[i], self.layer[i+1]
-            self.w[i] = mat(rand(n2, n1 + 1) - 0.5) / (n1 + n2)# 1 bias
+            self.w[i] = mat(random.rand(n2, n1 + 1) - 0.5) / (n1 + n2)# 1 bias
             #self.w[i] = mat(rand(n2, n1 + 1)) # 1 bias
 
     def fp(self, x, y):
@@ -99,6 +98,9 @@ class NN(object):
         if left != 0: num_batch += 1
         for i in range(self.epoch):
             start, total_loss = 0, 0
+            data = hstack((self.x, self.y))
+            random.shuffle(data)
+            self.x, self.y = data[:, :n], data[:, n:]
             for j in range(num_batch):
                 end = start + self.batch_size
                 if end > m: end = m

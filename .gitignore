@@ -1,5 +1,5 @@
 *.org~
-.html
-.html~
-.pyc
-
+*.html
+*.html~
+*.pyc
+*.log
