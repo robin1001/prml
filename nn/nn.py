@@ -106,7 +106,7 @@ class NN(object):
                 if end > m: end = m
                 loss, p = self.fp(self.x[start:end], self.y[start:end])
                 self.ebp(self.x[start:end], self.y[start:end])
-                print "epoch:%d minibatch:%d loss:%f " % (i, j, loss)
+                #print "epoch:%d minibatch:%d loss:%f " % (i, j, loss)
                 total_loss += loss
                 start += self.batch_size
             print "epoch:%d total_loss:%f\n" % (i, total_loss)

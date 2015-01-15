@@ -4,7 +4,7 @@ import scipy.io
 
 
 data = scipy.io.loadmat('mnist_uint8.mat')
-train_num,  test_num = 1000, 200
+train_num,  test_num = 60000, 10000
 train_x, train_y = data['train_x'][:train_num], data['train_y'][:train_num]
 test_x, test_y = data['test_x'][:test_num], data['test_y'][:test_num]
 
@@ -16,7 +16,7 @@ net.activefn = 'sigmoid'  #learn rate 1.0
 #net.activefn = 'tanh'
 #net.outfn = 'softmax'
 net.outfn = 'sigmoid'
-net.epoch = 1000
+net.epoch = 1
 net.learning_rate = 1.0
 #
 net.train()

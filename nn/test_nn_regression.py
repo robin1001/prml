@@ -10,12 +10,11 @@ net = NN(train_x, train_y, [2, 3, 1])
 net.activefn = 'sigmoid'  #learn rate 1.0
 #net.activefn = 'tanh'
 net.outfn = 'linear'
-net.epoch = 1000
+net.epoch = 100
 net.learning_rate = 1.0
-net.batch_size = 10
+net.batch_size = 00
 
 net.train()
 loss, y = net.test(test_x, test_y)
-#plot(abs(y - test_y))
-print abs(y - test_y)
-#show()
+plot(abs(y - test_y))
+show()
