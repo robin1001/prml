@@ -5,7 +5,7 @@ import scipy.io
 data = mat(loadtxt('data.txt'))
 dim_x = 2
 train_num = 1000
-output = 1
+output = 2
 train_x, train_y = data[:train_num, :dim_x], data[:train_num, dim_x:]
 test_x, test_y = data[train_num:, :dim_x], data[train_num:, dim_x:]
 
@@ -15,8 +15,8 @@ if output != 1:
 net = NN(train_x, train_y, [2, 10, output])
 net.activefn = 'sigmoid'  #learn rate 1.0
 #net.activefn = 'tanh'
-#net.outfn = 'softmax'
-net.outfn = 'sigmoid'
+net.outfn = 'softmax'
+#net.outfn = 'sigmoid'
 net.epoch = 100
 net.batch_size = 10
 net.learning_rate = 2.5
@@ -32,8 +32,8 @@ else:
     in1 = argmax(test_y, 1)    
     in2 = argmax(y, 1)
     print mean(in1 == in2)
-    pos = (y[:,0] > y[:,1])
-    neg = (y[:,0] < y[:,1])
+    pos = find(y[:,0] > y[:,1])
+    neg = find(y[:,0] <= y[:,1])
 a = arange(0, 1, 0.1)
 plot(a, a)
 plot(test_x[pos, 0], test_x[pos, 1], 'ro')
