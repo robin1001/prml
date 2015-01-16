@@ -53,7 +53,7 @@ class NN(object):
             loss = (y - self.a[-1]).T * (y - self.a[-1]) / m
         elif self.outfn == 'sigmoid':
             self.a[-1] = sigmoid(a)
-            loss = -sum(multiply(y, self.a[-1]) + multiply(1-y, 1-self.a[-1])) / m
+            loss = -sum(multiply(y, log(self.a[-1])) + multiply(1-y, log(1-self.a[-1]))) / m
         elif self.outfn == 'softmax':
             self.a[-1] = exp(a) / sum(exp(a), 1)
             loss = -sum(multiply(y, log(self.a[-1]))) 
@@ -85,8 +85,7 @@ class NN(object):
                 dw[i] = (d[i+1].T * self.a[i]) / m
             else:
                 dw[i] = (d[i+1][:,:-1].T * self.a[i]) / m
-            #print i, self.check_gradient(i, dw[i], x, y)
-
+            print i, self.check_gradient(i, dw[i], x, y)
         #gradient descent
         for i in range(0, self.n - 1):
             self.w[i] = self.w[i] - self.learning_rate * dw[i] 

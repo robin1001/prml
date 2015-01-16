@@ -12,7 +12,7 @@ net.activefn = 'sigmoid'  #learn rate 1.0
 net.outfn = 'linear'
 net.epoch = 100
 net.learning_rate = 1.0
-net.batch_size = 00
+net.batch_size = 100
 
 net.train()
 loss, y = net.test(test_x, test_y)
