@@ -22,7 +22,7 @@ net.activefn = 'sigmoid'  #learn rate 1.0
 #net.activefn = 'tanh'
 net.outfn = 'softmax'
 #net.outfn = 'sigmoid'
-net.epoch = 10
+net.epoch = 50
 net.batch_size = 100
 net.learning_rate = 1.0
 #
