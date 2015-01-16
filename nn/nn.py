@@ -85,7 +85,7 @@ class NN(object):
                 dw[i] = (d[i+1].T * self.a[i]) / m
             else:
                 dw[i] = (d[i+1][:,:-1].T * self.a[i]) / m
-            print i, self.check_gradient(i, dw[i], x, y)
+            #print i, self.check_gradient(i, dw[i], x, y)
         #gradient descent
         for i in range(0, self.n - 1):
             self.w[i] = self.w[i] - self.learning_rate * dw[i] 
