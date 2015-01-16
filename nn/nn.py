@@ -24,6 +24,8 @@ class NN(object):
         self.epoch = 1000
         self.learning_rate = 0.5
         self.batch_size = self.x.shape[0] #default 1 batch
+        self.momentum = 0.5
+        self.dw = None
         self.setup()
 
     def setup(self):
@@ -33,7 +35,6 @@ class NN(object):
         for i in range(self.n - 1):
             n1, n2 = self.layer[i], self.layer[i+1]
             self.w[i] = mat(random.rand(n2, n1 + 1) - 0.5) / (n1 + n2)# 1 bias
-            #self.w[i] = mat(rand(n2, n1 + 1)) # 1 bias
 
     def fp(self, x, y):
         '''forward propogation'''
@@ -57,8 +58,8 @@ class NN(object):
         elif self.outfn == 'softmax':
             self.a[-1] = exp(a) / sum(exp(a), 1)
             loss = -sum(multiply(y, log(self.a[-1]))) 
-        return loss, self.a[-1]
-        
+        return loss, self.a[-1]        
+
     def ebp(self, x, y):
         '''error backpropogation
            bishop prml neural network fomulation(5.50 - 5.56)
@@ -85,11 +86,13 @@ class NN(object):
                 dw[i] = (d[i+1].T * self.a[i]) / m
             else:
                 dw[i] = (d[i+1][:,:-1].T * self.a[i]) / m
+            if self.dw != None: 
+                dw[i] = dw[i] + self.momentum * self.dw[i]
             #print i, self.check_gradient(i, dw[i], x, y)
         #gradient descent
         for i in range(0, self.n - 1):
             self.w[i] = self.w[i] - self.learning_rate * dw[i] 
-    
+        self.dw = dw 
                
     def train(self):
         m, n = self.x.shape

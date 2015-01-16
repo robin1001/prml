@@ -10,7 +10,7 @@ net = NN(train_x, train_y, [2, 3, 1])
 net.activefn = 'sigmoid'  #learn rate 1.0
 #net.activefn = 'tanh'
 net.outfn = 'linear'
-net.epoch = 1000
+net.epoch = 100
 net.learning_rate = 1.0
 net.batch_size = 100
 
