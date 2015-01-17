@@ -22,9 +22,9 @@ net.activefn = 'sigmoid'  #learn rate 1.0
 #net.activefn = 'tanh'
 net.outfn = 'softmax'
 #net.outfn = 'sigmoid'
-net.epoch = 50
-net.batch_size = 100
-net.learning_rate = 1.0
+net.epoch = 20
+net.batch_size = 1000
+net.learning_rate = 2.0
 #
 net.train()
 loss, y = net.test(test_x, test_y)

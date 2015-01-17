@@ -34,7 +34,7 @@ class NN(object):
         self.a = [None]*self.n
         for i in range(self.n - 1):
             n1, n2 = self.layer[i], self.layer[i+1]
-            self.w[i] = mat(random.rand(n2, n1 + 1) - 0.5) / (n1 + n2)# 1 bias
+            self.w[i] = mat(random.rand(n2, n1 + 1) - 0.5) / n1 #(n1 + n2)# 1 bias
 
     def fp(self, x, y):
         '''forward propogation'''
