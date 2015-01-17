@@ -26,8 +26,10 @@
 
 ** mnist test result
 | test id | layer structure | learning_rate | activefn  | outputfn  | epoch | batch_size | momentum | test result |
-|       0 | [784 100 10]    |           1.2 | 'sigmoid' | 'sigmoid' | 25    | 100        | 0.5      | 0.939       |
-|       1 | [784 100 10]    |           1.2 | 'sigmoid' | 'softmax' | 25    | 100        | 0.5      | 0.952       |
+|       0 | [784 100 10]    |           1.2 | 'sigmoid' | 'sigmoid' |    25 |        100 |      0.5 |       0.939 |
+|       1 | [784 100 10]    |           1.2 | 'sigmoid' | 'softmax' |    25 |        100 |      0.5 |       0.952 |
+|       2 | [784 100 10]    |           1.2 | 'tanh'    | 'sigmoid' |    25 |        100 |      0.5 |       0.852 |
+|       3 | [784 100 10]    |           1.2 | 'tanh'    | 'softmax' |    25 |        100 |      0.5 |       0.954 |
 ** nn.py 
 there are many design pattern of the implementation of the output function and active funtion, for example:
 1. oop: class Sigmoid with eval and dirivate function

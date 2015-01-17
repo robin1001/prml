@@ -15,10 +15,10 @@ test_x, test_y = mat(test_x) / 255.0, mat(test_y)
 #test_x = (test_x - mu) / sigma
 
 net = NN(train_x, train_y, [784, 100, 10])
-net.activefn = 'sigmoid'  #learn rate 1.0
-#net.activefn = 'tanh'
-#net.outfn = 'softmax'
-net.outfn = 'sigmoid'
+#net.activefn = 'sigmoid'  #learn rate 1.0
+net.activefn = 'tanh'
+net.outfn = 'softmax'
+#net.outfn = 'sigmoid'
 net.epoch = 25
 net.batch_size = 100
 net.learning_rate = 1.2
