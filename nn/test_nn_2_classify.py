@@ -12,14 +12,16 @@ test_x, test_y = data[train_num:, :dim_x], data[train_num:, dim_x:]
 if output != 1: 
     train_y = hstack((train_y, 1-train_y))
     test_y = hstack((test_y, 1-test_y))
+
+random.seed(0)
 net = NN(train_x, train_y, [2, 10, output])
-net.activefn = 'sigmoid'  #learn rate 1.0
-#net.activefn = 'tanh'
+#net.activefn = 'sigmoid'  #learn rate 1.0
+net.activefn = 'tanh'
 net.outfn = 'softmax'
 #net.outfn = 'sigmoid'
 net.epoch = 100
 net.batch_size = 10
-net.learning_rate = 2.5
+net.learning_rate = 1.5
 
 net.train()
 loss, y = net.test(test_x, test_y)
