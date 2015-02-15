@@ -74,7 +74,7 @@ class NN(object):
         m = y.shape[0]
         for i in range(self.n - 2, 0, -1):
             #multiply fucntion: numpy dot multiply fucntion, like .* in matlab
-            if self.activefn == 'sigmoid': h = multiply(self.a[i], self.a[i])
+            if self.activefn == 'sigmoid': h = multiply(self.a[i], 1-self.a[i])
             else: h = 1 - multiply(self.a[i], self.a[i])
             if i+1 == self.n - 1: #last layer
                 d[i] = multiply(h, d[i+1] * self.w[i])

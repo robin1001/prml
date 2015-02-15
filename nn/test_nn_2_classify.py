@@ -16,7 +16,7 @@ if output != 1:
 random.seed(0)
 net = NN(train_x, train_y, [2, 10, output])
 #net.activefn = 'sigmoid'  #learn rate 1.0
-net.activefn = 'tanh'
+#net.activefn = 'tanh'
 net.outfn = 'softmax'
 #net.outfn = 'sigmoid'
 net.epoch = 100

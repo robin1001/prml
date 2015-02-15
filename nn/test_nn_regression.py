@@ -8,7 +8,7 @@ test_x, test_y = data[800:, 0:2], data[800:, -1]
 random.seed(0)
 net = NN(train_x, train_y, [2, 10, 1])
 #net.activefn = 'sigmoid'  #learn rate 1.0
-net.activefn = 'tanh'
+net.activefn = 'sigmoid'
 net.outfn = 'linear'
 net.epoch = 100
 net.learning_rate = 1.0

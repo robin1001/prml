@@ -22,7 +22,7 @@ test_x, test_y = mat(test_x) / 255.0, mat(test_y)
 ''' tests all the activefn and outfn'''
 random.seed(0)
 net = NN(train_x, train_y, [784, 100, 10])
-net.activefn = 'sigmoid'  #learn rate 1.0
+net.activefn = 'tanh'  #learn rate 1.0
 net.outfn = 'softmax'
 net.epoch = 25
 net.batch_size = 100
