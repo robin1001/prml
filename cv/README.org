@@ -1,0 +1,3 @@
+* cross validation
+
+This code is for data mining project, use serveral classifiers for gene classification, eg svm, knn, naive bayes. Add use cross validation for evaluate the performance of classifiers.
