@@ -81,7 +81,7 @@ plt.plot(n_components, results[:,2], 'b', label='naive bayes scores')
 plt.xlabel('nb of lda components')
 plt.ylabel('lda CV scores')
 plt.legend(loc='lower right')
-#plt.show()
+plt.show()
 
 #predict on testset, pca(n_componet=10), svm
 pca = PCA(n_components=i, whiten=True).fit(train_data)
