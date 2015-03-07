@@ -1,7 +1,8 @@
-*.org~
+*.o
+*.out
 *.html
-*.html~
 *.pyc
 *.log
 *.swp
-\#*#
+*~
+\#*\#
