@@ -134,3 +134,4 @@ class NN(object):
     def test(self, x, y):
         loss, p = self.fp(mat(x), mat(y))
         return loss, p
+
