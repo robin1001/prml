@@ -14,7 +14,7 @@ class FullLayer:
         self.activefn = activefn
         self.learn_rate, self.momentum = learn_rate, momentum
 
-    def foward_propagate(self, inn): pass
+    def foward_propagate(self, inn): 
         act = inn * self.w.T + self.b
         if self.activefn == 'sigmoid':     
             return sigmoid(act)
@@ -40,10 +40,28 @@ class FullLayer:
         self.b = self.b - self.learn_rate * db + self.momentum * self.pdb
         self.pdw, self.pdb = db, dw
         return in_diff
+    def type(self):
+        return 'full_layer'
 
 def RecurrentLayer:
+    def __init__(self, in_dim, out_dim, activefn, learn_rate, momentum=0) 
+        self.w, self.pdw = randn(out_dim, in_dim), zeros((out_dim, in_dim))
+        self.b, self.pdb = rand(1, out_dim), zeros((1, out_dim))
+        self.wh, self.pdwh = randn(out_dim, out_dim), zeros((out_dim, out_dim))
+        self.bh, self.pdbh = rand(1, out_dim), zeros((1, out_dim))
+        self.activefn = activefn
+        self.learn_rate, self.momentum = learn_rate, momentum
+    def foward_propagate(self, inn): 
+        t, o = inn.shape[0], self.wh.shape[0] #o, out_dim
+        out = zeros((t, o))
+        out[0, :] =  inn[0, :] * self.w.T + self.b
+        for i in range(1, t):
+            out[i, :] = inn[i, :] * self.w.T + self.b + out[i-1, :] * self.wh + self.bh
+        return out
+    def back_propagate(self, inn, out, out_diff): 
+
     def type(self):
-        return 'recurrent_layer'
+        return 'rnn_layer'
 
 def LstmLayer:
     def type(self):
